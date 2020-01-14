@@ -4,7 +4,7 @@ export const ButtonContainer = styled.button`
   color: var(--mainBlue) !important;
   text-transform: uppercase;
   background: var(--mainWhite);
-  padding: 0.2rem 0.5rem;
+  padding: 0.22rem 0.5rem;
   margin: 0.5rem;
   border: 4px solid var(--mainBlue) !important;
 
