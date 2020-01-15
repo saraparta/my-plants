@@ -39,8 +39,24 @@ class ProductProvider extends Component {
   // Create temporary productory
   // Get item index with getItem method
   // Change items properties -> in cart value to true and count +=1
+  //change value in
   addToCart = id => {
-    let tempProducts = [...this.state];
+    let tempProducts = [...this.state.products];
+    const index = tempProducts.indexOf(this.getItem(id));
+    const product = tempProducts[index];
+    product.inCart = true;
+    product.count = 1;
+    const price = product.price;
+    product.total = price;
+
+    this.setState(
+      () => {
+        return { products: tempProducts, cart: [...this.state.cart, product] };
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
 
   render() {

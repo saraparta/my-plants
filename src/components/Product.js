@@ -30,22 +30,22 @@ export default class Product extends Component {
                 >
                   {inCart ? (
                     <p className="text-capitalize mb-0" disabled>
-                      In cart
+                      In cart <IoMdHeart></IoMdHeart>
                     </p>
                   ) : (
-                    <ion-icon name="IoMdHeartEmpty">
-                      <IoMdHeartEmpty></IoMdHeartEmpty>
-                    </ion-icon>
+                    <p className="text-capitalize mb-0" disabled>
+                      NOT INCART <IoMdHeartEmpty></IoMdHeartEmpty>
+                    </p>
                   )}
                 </button>
               </div>
             )}
           </ProductConsumer>
           {/* Card footer below. align-self-center (two different size/front texts on same level), mb(margin botton)*/}
-          <div className="card-footer mb-0 d-flex justify-content-between">
+          <div className="card-footer d-flex justify-content-between">
             <p className="align-self-center mb-0 ">{title}</p>
             <h5 className="text-blue font-italic mx-auto mb-0">
-              <span className="mr-4">$</span>
+              <span className="mr-1">$</span>
               {price}
             </h5>
           </div>
@@ -74,15 +74,9 @@ const ProductWrapper = styled.div`
   .card-footer {
     background: transparent;
     border-top: transparent;
-    bottom: 0;
     transition: all 0.5s linear;
-    transform: scale(1.21);
   }
-  .cart-btn {
-    bottom: 3.5rem;
-    right: 3.5rem;
-    display: none;
-  }
+
   &:hover {
     .card {
       border: 0.04rem solid rgba(0, 0, 0, 0.2);
@@ -108,17 +102,21 @@ const ProductWrapper = styled.div`
   }
   .cart-btn {
     position: absolute;
-    background: transparent;
-    font-size: 3rem;
+    bottom: 0;
+    right: 0;
+    background: var(--mainWhite);
+    font-size: 2rem;
     border: none !important;
     border-radius: 0.5rem 0 0 0;
+    transform: translate(0, 100%);
+    transition: all 0.5s linear;
   }
 
   .img-container: hover .cart-btn {
     transform: translate(0, 0);
-    display: inline-block;
   }
   .cart-btn:hover {
+    color: var(--mainDark);
     cursor: pointer;
   }
 `;
