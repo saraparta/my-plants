@@ -9,7 +9,8 @@ const ProductContext = React.createContext();
 class ProductProvider extends Component {
   state = {
     products: [],
-    detailProduct: detailProduct
+    detailProduct: detailProduct,
+    cart: []
   };
   componentDidMount() {
     this.setPlants();
@@ -39,7 +40,7 @@ class ProductProvider extends Component {
   // Create temporary productory
   // Get item index with getItem method
   // Change items properties -> in cart value to true and count +=1
-  //change value in
+  //change value in actual state, ADD CART property above
   addToCart = id => {
     let tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
@@ -48,14 +49,11 @@ class ProductProvider extends Component {
     product.count = 1;
     const price = product.price;
     product.total = price;
-
     this.setState(
       () => {
         return { products: tempProducts, cart: [...this.state.cart, product] };
       },
-      () => {
-        console.log(this.state);
-      }
+      () => console.log(this.state)
     );
   };
 
