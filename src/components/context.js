@@ -6,11 +6,14 @@ import {
 
 const ProductContext = React.createContext();
 //Two properties: Provider(provides all information) and consumer
+//Properties below contain information/data that change when clicking items and adding to cart
 class ProductProvider extends Component {
   state = {
     products: [],
     detailProduct: detailProduct,
-    cart: []
+    cart: [],
+    modalOpen: false,
+    modalProduct: detailProduct
   };
   componentDidMount() {
     this.setPlants();
@@ -56,6 +59,19 @@ class ProductProvider extends Component {
       () => console.log(this.state)
     );
   };
+  openModal = id => {
+    const product = this.getItem(id);
+    this.setState(() => {
+      return { modalProduct: product, modalOpen: true };
+    });
+  };
+
+  //function used in Product.js and in Details.js
+  closeModal = () => {
+    this.setState(() => {
+      return { modalOpen: false };
+    });
+  };
 
   render() {
     return (
@@ -63,7 +79,9 @@ class ProductProvider extends Component {
         value={{
           ...this.state,
           handleDetail: this.handleDetail,
-          addToCart: this.addToCart
+          addToCart: this.addToCart,
+          openModal: this.openModal,
+          closeModal: this.closeModal
         }}
       >
         {this.props.children}
