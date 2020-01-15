@@ -48,17 +48,20 @@ export default class Details extends Component {
                   </p>
                   <p className="text-muted lead">{info}</p>
                   {/* Buttons */}
-                  <Link to="/">
-                    <ButtonContainer>Back to products</ButtonContainer>
-                  </Link>
-                  <ButtonContainer
-                    disabled={inCart ? true : false}
-                    onClick={() => {
-                      value.addToCart(id);
-                    }}
-                  >
-                    {inCart ? "Already in Cart" : "add to cart"}
-                  </ButtonContainer>
+                  <div>
+                    <Link to="/">
+                      <ButtonContainer>Back to products</ButtonContainer>
+                    </Link>
+                    <ButtonContainer
+                      cart
+                      disabled={inCart ? true : false}
+                      onClick={() => {
+                        value.addToCart(id);
+                      }}
+                    >
+                      {inCart ? "Already in Cart" : "add to cart"}
+                    </ButtonContainer>
+                  </div>
                 </div>
               </div>
               {/* End of product info */}

@@ -24,11 +24,23 @@ class ProductProvider extends Component {
       return { products: tempProducts };
     });
   };
-  handleDetail = () => {
-    console.log("hello from handleDetail");
+  //Utility method that gets the item
+  getItem = id => {
+    const product = this.state.products.find(item => item.id === id);
+    return product;
   };
-  addToCart = () => {
-    console.log("Hello from add to cart.id is ${id}");
+
+  handleDetail = id => {
+    const product = this.getItem(id);
+    this.setState(() => {
+      return { detailProduct: product };
+    });
+  };
+  // Create temporary productory
+  // Get item index with getItem method
+  // Change items properties -> in cart value to true and count +=1
+  addToCart = id => {
+    let tempProducts = [...this.state];
   };
 
   render() {
