@@ -88,7 +88,15 @@ class ProductProvider extends Component {
     console.log("remove item");
   };
   clearCart = () => {
-    console.log("cart cleared");
+    this.setState(
+      () => {
+        return { cart: [] };
+      },
+      () => {
+        this.setPlants();
+        this.addTotals();
+      }
+    );
   };
   addTotals = () => {
     let subTotal = 0;
@@ -96,7 +104,7 @@ class ProductProvider extends Component {
     const tempTax = subTotal * 0.24;
     {
       /* Make sure that tempTax returns only two decimal value. Returns initially a string.
-      toFixed determines how many decimals we want to return. 
+      toFixed determines how many decimals we want to return.  
       Call function when item added to the cart: loop through all products*/
     }
     const tax = parseFloat(tempTax.toFixed(2));
