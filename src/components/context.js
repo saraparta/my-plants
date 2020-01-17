@@ -11,12 +11,12 @@ class ProductProvider extends Component {
   state = {
     products: [],
     detailProduct: detailProduct,
-    cart: plantList,
+    cart: [],
     modalOpen: false,
     modalProduct: detailProduct,
-    cartSubTotal: 10,
-    cartTax: 20,
-    cartTotal: 30
+    cartSubTotal: 0,
+    cartTax: 0,
+    cartTotal: 0
   };
   componentDidMount() {
     this.setPlants();
@@ -59,7 +59,9 @@ class ProductProvider extends Component {
       () => {
         return { products: tempProducts, cart: [...this.state.cart, product] };
       },
-      () => console.log(this.state)
+      () => {
+        this.addTotals();
+      }
     );
   };
   openModal = id => {
@@ -87,6 +89,26 @@ class ProductProvider extends Component {
   };
   clearCart = () => {
     console.log("cart cleared");
+  };
+  addTotals = () => {
+    let subTotal = 0;
+    this.state.cart.map(item => (subTotal += item.total));
+    const tempTax = subTotal * 0.24;
+    {
+      /* Make sure that tempTax returns only two decimal value. Returns initially a string.
+      toFixed determines how many decimals we want to return. 
+      Call function when item added to the cart: loop through all products*/
+    }
+    const tax = parseFloat(tempTax.toFixed(2));
+    const total = subTotal + tax;
+    const totalFixed = total.toFixed(2);
+    this.setState(() => {
+      return {
+        cartSubTotal: subTotal,
+        cartTax: tax,
+        cartTotal: total
+      };
+    });
   };
   render() {
     return (
