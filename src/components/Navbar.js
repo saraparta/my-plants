@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "/Users/sarapartanen/my-plants/src/a-vector-circle.png";
 import styled from "styled-components";
 import { ButtonContainer } from "./Button";
+import { TiThLargeOutline } from "react-icons/ti";
 
 export default class Navbar extends Component {
   render() {
@@ -10,20 +11,14 @@ export default class Navbar extends Component {
       /* sm specifies the attributes for small screen */
     }
     return (
-      <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5 bg-primary">
+      <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5 bg-primary ">
         <Link to="/">
-          <img
-            src={logo}
-            width="40"
-            height="40"
-            alt="store"
-            className="navbar-brand"
-          ></img>
+          <TiThLargeOutline className="IconContext"></TiThLargeOutline>
         </Link>
-        <ul className="navbar-nav.align-items-center">
+        <ul className="navbar-nav align-items-center">
           <li className="nav-item ml-5">
-            <Link to="/" className="nav-link">
-              products
+            <Link to="/" className="nav-link text-capitalize">
+              plants
             </Link>
           </li>
         </ul>
@@ -41,7 +36,14 @@ export default class Navbar extends Component {
 }
 
 const NavWrapper = styled.nav`
-  background: var(--mainBlue) !important;
+  .IconContext {
+    color: var(--mainWhite) !important;
+    font-size: 2.5rem !important;
+  }
+  .navbar-nav {
+    align-items: center;
+  }
+  background: var(--lightBlue) !important;
   .nav-link {
     color: var(--mainWhite) !important;
     font-size: 1.3rem;
