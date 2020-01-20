@@ -10,6 +10,7 @@ import Details from "./components/Details";
 import Cart from "./components/Cart";
 import Default from "./components/Default";
 import Modal from "./components/Modal.js";
+
 function App() {
   /* Allows us to simulate html tag, no need for div etc tags. */
   return (
